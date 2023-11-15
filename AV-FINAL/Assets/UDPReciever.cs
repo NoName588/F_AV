@@ -34,14 +34,13 @@ public class UDPReciever : MonoBehaviour
                 byte[] dataByte = client.Receive(ref anyIP);
                 data = Encoding.UTF8.GetString(dataByte);
 
-                // Dividir los datos por punto y coma para obtener el primer número
                 string[] dataParts = data.Split(';');
                 if (dataParts.Length > 0)
                 {
                     if (int.TryParse(dataParts[0], out firstNumber))
                     {
                         if (printToConsole) { print(data); }
-                        // Puedes usar 'firstNumber' para acceder al primer número
+                        // lo posemos borrar en caso de solucionar el HandTraking
                     }
                 }
             }

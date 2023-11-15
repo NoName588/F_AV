@@ -8,7 +8,11 @@ public class Activator : MonoBehaviour
     public UDPReciever udpReciever;  // Asegúrate de asignar el componente UDPReceiver
 
     public List<GameObject> randomObjects;  // Lista de objetos para activar al azar
-    private int selectedRandomObjectIndex = -1;  // Índice del objeto seleccionado al azar
+    private int selectedRandomObjectIndex = -1;// Índice del objeto seleccionado al azar
+
+    public GameObject lose;
+    public GameObject win;
+    public GameObject Empate;
 
     private int previousNumber = -1;  // Inicializa con un valor que no coincida con ningún número
 
@@ -84,7 +88,9 @@ public class Activator : MonoBehaviour
         // Definir las reglas del juego
         if (playerNumber == machineNumber)
         {
-            Debug.Log("¡Es un empate!");
+            Empate.SetActive(true);
+            lose.SetActive(false);
+            win.SetActive(false);
         }
         else
         {
@@ -112,11 +118,15 @@ public class Activator : MonoBehaviour
 
             if (playerWins)
             {
-                Debug.Log("¡Ganaste!");
+                win.SetActive(true);
+                lose.SetActive(false);
+                Empate.SetActive(false);
             }
             else
             {
-                Debug.Log("¡Perdiste!");
+                win.SetActive(false);
+                lose.SetActive(true);
+                Empate.SetActive(false);
             }
         }
     }
